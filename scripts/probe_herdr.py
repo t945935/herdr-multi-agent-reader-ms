@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Capture CLI evidence; optionally exercise only newly-created sibling panes."""
+"""Rekod bukti CLI; jika diminta, uji panel saudara yang baru dicipta sahaja."""
 import argparse
 import json
 import os
@@ -30,7 +30,7 @@ def main():
         record = {"command": ["herdr", *argv], "started_at": started,
                   "returncode": p.returncode, "stdout": p.stdout, "stderr": p.stderr}
         records.append(record)
-        # Bare command groups print usage on stderr and return 2 on Herdr 0.9.3.
+        # Kumpulan arahan tanpa subarahan memaparkan penggunaan ke stderr dan memulangkan 2 pada Herdr 0.9.3.
         discovery_help = len(argv) == 1 and argv[0] in {"agent", "pane", "workspace", "tab"} and p.returncode == 2
         if p.returncode and not discovery_help:
             raise RuntimeError(p.stderr or p.stdout)
@@ -61,8 +61,8 @@ def main():
                 for name, target in zip(names, [pane, second]):
                     command("agent", "start", name, "--kind", args.agents, "--pane", target, "--timeout", "30000", timeout=40)
                 # Fixed acceptance tokens test prompt delivery; they do not assert code-review quality.
-                prompts = ["Reply only BOOK_AGENT_A_OK. This is a reader-package communication test. Do not use tools, read or write files, or spawn agents.",
-                           "Reply only BOOK_AGENT_B_OK. This is a reader-package communication test. Do not use tools, read or write files, or spawn agents."]
+                prompts = ["Balas hanya BOOK_AGENT_A_OK. Ini ujian komunikasi pakej pembaca. Jangan gunakan alat, baca atau tulis fail, atau mulakan ejen lain.",
+                           "Balas hanya BOOK_AGENT_B_OK. Ini ujian komunikasi pakej pembaca. Jangan gunakan alat, baca atau tulis fail, atau mulakan ejen lain."]
                 for name, prompt in zip(names, prompts):
                     command("agent", "prompt", name, prompt)
                 for name, token in zip(names, ["BOOK_AGENT_A_OK", "BOOK_AGENT_B_OK"]):

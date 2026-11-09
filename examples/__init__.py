@@ -1,1 +1,1 @@
-"""Executable companion to Reliable Multi-Agent Workflows with Herdr."""
+"""Sumber pendamping boleh laksana untuk buku Herdr."""

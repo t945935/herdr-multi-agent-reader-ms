@@ -20,7 +20,7 @@ def run(stages, cwd, output):
                                        text=True, timeout=stage.get("timeout", 60))
             code, log = completed.returncode, completed.stdout + completed.stderr
         except subprocess.TimeoutExpired as exc:
-            code, log = 124, f"Timeout after {exc.timeout}s\n"
+            code, log = 124, f"Tamat masa selepas {exc.timeout}s\n"
         log_name = f"{index + 1:02d}.log"
         (output / log_name).write_text(log)
         accepted = code == 0 and all((Path(cwd) / p).is_file() for p in stage.get("artifacts", []))

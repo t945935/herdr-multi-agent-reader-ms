@@ -44,10 +44,10 @@ def render(data):
         lines.extend([f"### {claim['text']}", "", "Status: " + claim["status"], ""])
         for evidence in claim.get("evidence", []):
             source = sources[evidence["source"]]
-            lines.extend([f"> {evidence['quote']}", "", f"Source: [{source['title']}]({source['url']})", ""])
+            lines.extend([f"> {evidence['quote']}", "", f"Sumber: [{source['title']}]({source['url']})", ""])
     lines.extend(["## Sumber", ""])
     for source in sources.values():
-        lines.append(f"- {source['id']}：[{source['title']}]({source['url']})；{source['kind']}；accessed {source['accessed']}")
+        lines.append(f"- {source['id']}：[{source['title']}]({source['url']})；{source['kind']}；dicapai {source['accessed']}")
     return "\n".join(lines) + "\n"
 
 

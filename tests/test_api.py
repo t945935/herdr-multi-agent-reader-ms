@@ -26,7 +26,7 @@ def test_crud_persists_and_serves_frontend(client):
     response = client.patch(f"/api/tasks/{task_id}", json={"completed": True, "description": ""})
     assert response.status_code == 200 and response.json()["completed"] is True
     assert response.json()["description"] == ""
-    # A second application lifespan reopens the same disk database.
+    # Kitar hayat aplikasi kedua membuka semula pangkalan data cakera yang sama.
     with TestClient(app) as reopened:
         assert reopened.get(f"/api/tasks/{task_id}").json()["completed"] is True
     assert client.delete(f"/api/tasks/{task_id}").status_code == 204

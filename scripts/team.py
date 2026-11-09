@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Dispatch to an already-started idle agent; verify a task-specific receipt."""
+"""Hantar tugas kepada ejen idle yang telah dimulakan dan sahkan resit khusus tugas."""
 import argparse
 import json
 import os
@@ -32,9 +32,9 @@ def main():
         raise SystemExit("Pilih laluan resit baharu; jangan guna semula tugas lama")
     task_id = uuid.uuid4().hex
     prompt = args.prompt.read_text() + (
-        f"\n\nThis task_id={task_id}\ncompletion_path={path}\n"
-        'Selesaikan tugasan sebenar, kemudian tulis JSON: {"task_id":"the identifier above","status":"completed",'
-        '"summary":"specific deliverables and verification","artifacts":["actual artifact paths"]}。'
+        f"\n\ntask_id tugas ini ialah {task_id}\nlaluan_selesai={path}\n"
+        'Selesaikan tugasan sebenar, kemudian tulis JSON: {"task_id":"pengecam di atas","status":"completed",'
+        '"summary":"hasil kerja khusus dan pengesahan","artifacts":["laluan artifak sebenar"]}。'
         "Jika tugasan tidak dapat diselesaikan, gunakan status=blocked dan jelaskan sebabnya dalam summary. Jangan mulakan ejen lain."
     )
     settled = call("agent", "prompt", args.target, prompt, "--wait", "--timeout", "300000")

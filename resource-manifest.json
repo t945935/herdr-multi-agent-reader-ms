@@ -1,9 +1,9 @@
 {
   "name": "Herdr Multi-Agent Reader Resources — Bahasa Melayu Malaysia",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "locale": "ms-MY",
   "publisher": "Happy eBook",
   "book": "Aliran Kerja Berbilang Ejen yang Boleh Dipercayai dengan Herdr",
-  "tests": "42 pytest cases; run locally before use",
-  "rights": "Companion-resource distribution only; see RIGHTS.md"
+  "tests": "42 kes pytest; jalankan setempat sebelum digunakan",
+  "rights": "Pengedaran bahan pelengkap buku sahaja; lihat RIGHTS.md"
 }
